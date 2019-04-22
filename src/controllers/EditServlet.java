@@ -14,21 +14,21 @@ import models.Task;
 import utils.DBUtil;
 
 /**
- * Servlet implementation class ShowServlet
+ * Servlet implementation class EditServlet
  */
-@WebServlet("/show")
-public class ShowServlet extends HttpServlet {
+@WebServlet("/edit")
+public class EditServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowServlet() {
+    public EditServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-    /**
+    /**s
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,9 +37,13 @@ public class ShowServlet extends HttpServlet {
         Task t = em.find(Task.class, Integer.parseInt(request.getParameter("id")));
 
         em.close();
-        request.setAttribute("task", t);
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/tasks/show.jsp");
+        request.setAttribute("task", t);
+        request.setAttribute("_token", request.getSession().getId());
+
+        request.getSession().setAttribute("task_id", t.getId());
+
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/tasks/edit.jsp");
         rd.forward(request, response);
     }
 
