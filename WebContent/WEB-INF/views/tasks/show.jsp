@@ -22,7 +22,7 @@
                       </tr>
                       <tr>
                            <th>更新日時</th>
-                           <td><<fmt:formatDate value="${task.updated_at}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                           <td><fmt:formatDate value="${task.updated_at}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                       </tr>
                    </tbogy>
                 </table>

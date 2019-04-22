@@ -48,6 +48,7 @@ public class UpdateServlet extends HttpServlet {
 
             em.getTransaction().begin();
             em.getTransaction().commit();
+            request.getSession().setAttribute("flush", "タスクの内容を編集しました。");
             em.close();
         }
 
